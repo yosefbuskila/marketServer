@@ -34,7 +34,10 @@ app.use(fileUpload({
 app.use('/user', userRouter);
 app.use('/gen', generalRouter);
  
-const port = 3001;
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port=3001;
+}
 
 app.use(function (req, res, next) {
     console.log('bd',req.body)
