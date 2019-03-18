@@ -2,7 +2,7 @@ const con = require('../../lib/db/connectDb');
 
 function query(sql, args) {
     return new Promise((resolve, reject) => {
-        con.query(sql, args, (err, rows) => {
+        con.con.query(sql, args, (err, rows) => {
             if (err){
                 console.log("---err func---",err)
                 return reject(err);

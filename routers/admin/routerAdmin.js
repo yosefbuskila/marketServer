@@ -11,7 +11,7 @@ router.use(function (req, res, next) {
 
 function query(sql, args) {
     return new Promise((resolve, reject) => {
-        con.query(sql, args, (err, rows) => {
+        con.con.query(sql, args, (err, rows) => {
             if (err) {
                 return reject(err);
                 console.log("err func", err)
@@ -91,7 +91,7 @@ update = function (name, categery_id, price, picture,productID) {
     return new Promise(function (resolve, reject,) {
         let sql = "UPDATE `products` SET `name` = ?, `categery_id` = ?, `price` = ?";
         if (picture!=null)
-        sql+= ", `picture` = "+ con.escape(picture);
+        sql+= ", `picture` = "+ con.con.escape(picture);
         sql+=" WHERE `products`.`id` = ?;";
         console.log('qer', sql)
         query(sql, [name,categery_id,price,productID])
