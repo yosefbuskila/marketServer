@@ -4,9 +4,10 @@ function query(sql, args) {
     return new Promise((resolve, reject) => {
         con.query(sql, args, (err, rows) => {
             if (err){
+                console.log("---err func---",err)
                 return reject(err);
-                console.log("err func",err)
             }
+            console.log("---OK fubc---")
             resolve(rows);
         });
     });
